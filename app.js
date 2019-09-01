@@ -5,6 +5,8 @@ const btnAdd = document.querySelector("#btn-add");
 const btnClear = document.querySelector("#btn-clear");
 const listItems = document.querySelector("#item-content");
 const expensesTotalPara = document.querySelector("#total-expenses");
+const alertContr = document.querySelector('ion-alert-controller');
+
 
 let totalExpenses = 0;
 // add button
@@ -12,6 +14,13 @@ btnAdd.addEventListener('click', () => {
     const reason = reasonTxt.value;
     const amount = amountTxt.value;
     if (reason.trim().length <= 0 || amount.trim().length <= 0) {
+        alertContr.create({
+            message: 'Please enter valid inputs!',
+            header: 'Invalid inputs',
+            buttons: ['Okay']
+        }).then(alertElement => {
+            alertElement.present();
+        });
         return;
     }
     const newItem = document.createElement('ion-item');
