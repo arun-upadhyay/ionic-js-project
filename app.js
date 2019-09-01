@@ -18,14 +18,18 @@ btnAdd.addEventListener('click', () => {
     const formattedResult = reason + ":  $ " + amount;
     newItem.textContent = formattedResult;
     totalExpenses += parseFloat(amount);
-    expensesTotalPara.textContent = "Total : " + totalExpenses;
+    expensesTotalPara.textContent = "Total : $ " + totalExpenses;
     listItems.appendChild(newItem);
+    clearInput();
 
 });
-// clear button
-btnClear.addEventListener('click', () => {
+clearInput = () => {
     reasonTxt.value = "";
     amountTxt.value = "";
+}
+// clear button
+btnClear.addEventListener('click', () => {
+    clearInput();
 });
 
 
