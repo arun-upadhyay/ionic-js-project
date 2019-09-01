@@ -4,7 +4,9 @@ const amountTxt = document.querySelector("#input-amount");
 const btnAdd = document.querySelector("#btn-add");
 const btnClear = document.querySelector("#btn-clear");
 const listItems = document.querySelector("#item-content");
+const expensesTotalPara = document.querySelector("#total-expenses");
 
+let totalExpenses = 0;
 // add button
 btnAdd.addEventListener('click', () => {
     const reason = reasonTxt.value;
@@ -13,9 +15,12 @@ btnAdd.addEventListener('click', () => {
         return;
     }
     const newItem = document.createElement('ion-item');
-    const formattedResult = reason + " $ " + amount;
+    const formattedResult = reason + ":  $ " + amount;
     newItem.textContent = formattedResult;
+    totalExpenses += parseFloat(amount);
+    expensesTotalPara.textContent = "Total : " + totalExpenses;
     listItems.appendChild(newItem);
+
 });
 // clear button
 btnClear.addEventListener('click', () => {
